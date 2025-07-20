@@ -11,7 +11,7 @@ exports.addTurf = async(req,res)=>{
 
 exports.getTurf = async (req, res) => {
  const response = await Turf.find()
- console.log(response,"kkkk")
+
  
   return res.status(200).json({ message: "All turf fetched ", response });
 };
