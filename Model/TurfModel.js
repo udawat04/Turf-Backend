@@ -7,6 +7,7 @@ const TurfSchema = new mongoose.Schema(
     city:{type:String},
     location: { type: String, required: true }, // city name
     price: { type: Number },
+    image: { type: String, default: "" }, // Turf image URL
   },
   { timestamps: true }
 );

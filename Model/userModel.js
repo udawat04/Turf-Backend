@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String },
     otp: { type: String },
     validTime: { type: Date },
+    image: { type: String, default: "" }, // Profile image URL
   },
   { timestamps: true }
 );
