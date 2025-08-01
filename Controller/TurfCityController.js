@@ -56,7 +56,7 @@ exports.getAllCities = async (req, res) => {
     const cities = await City.find().sort({ city: 1 });
     return res.status(200).json({ 
       msg: "Cities retrieved successfully", 
-      cities 
+      result: cities 
     });
   } catch (error) {
     return res.status(400).json({ error: error.message });

@@ -50,7 +50,7 @@ exports.getAllTurfs = async (req, res) => {
     const turfs = await Turf.find().sort({ createdAt: -1 });
     return res.status(200).json({ 
       msg: "Turfs retrieved successfully", 
-      turfs 
+      result: turfs 
     });
   } catch (error) {
     return res.status(400).json({ error: error.message });
@@ -81,7 +81,7 @@ exports.getTurfsByCity = async (req, res) => {
     
     return res.status(200).json({ 
       msg: "Turfs retrieved successfully", 
-      turfs 
+      result: turfs 
     });
   } catch (error) {
     return res.status(400).json({ error: error.message });

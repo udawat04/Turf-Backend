@@ -3,22 +3,34 @@ const {
   createUser, 
   getUser, 
   login, 
-  reset, 
-  forgetPassword,
   updateUser,
   deleteUser,
-  getUserProfile
+  getUserProfile,
+  verifyCredentialsAndSendOTP,
+  sendForgetOTP,
+  verifyResetOTP,
+  verifyForgetOTP,
+  changeResetPassword,
+  changeForgetPassword
 } = require("../Controller/userController")
 const { authenticateToken } = require("../middleware/auth")
 const upload = require("../middleware/upload")
 
 const router = express()
 
-router.post("/createUser",createUser)
+router.post("/createUser", upload.single('image'), createUser)
 router.get("/getUser",getUser)
 router.post("/login",login)
-router.put("/reset",reset)
-router.put("/forget",forgetPassword)
+
+// OTP routes for password reset (Two-step process)
+router.post("/verifyCredentialsAndSendOTP", verifyCredentialsAndSendOTP)
+router.post("/verifyResetOTP", verifyResetOTP)
+router.post("/changeResetPassword", changeResetPassword)
+
+// OTP routes for forget password (Two-step process)
+router.post("/sendForgetOTP", sendForgetOTP)
+router.post("/verifyForgetOTP", verifyForgetOTP)
+router.post("/changeForgetPassword", changeForgetPassword)
 
 // Protected routes (require authentication)
 router.get("/profile", authenticateToken, getUserProfile)
